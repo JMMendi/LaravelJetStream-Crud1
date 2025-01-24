@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\InicioController;
 use App\Livewire\Prueba;
+use App\Livewire\ShowUserPosts;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('inicio');
+Route::get('/', [InicioController::class, "inicio"])->name('inicio');
 
 Route::middleware([
     'auth:sanctum',
@@ -16,6 +16,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('prueba', Prueba::class)->name('prueba');
+    Route::get('posts', ShowUserPosts::class)->name('posts');
 });
 
